@@ -276,5 +276,6 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.MEDIA_ARTWORK_BLUR_RADIUS, new InclusiveFloatRangeValidator(1f, 25f));
         VALIDATORS.put(System.MEDIA_ARTWORK_FADE_PERCENT, new InclusiveIntegerRangeValidator(0, 100));
         VALIDATORS.put(System.ENABLE_RIPPLE_EFFECT, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.QS_SYSTEM_INFO, ANY_INTEGER_VALIDATOR);
     }
 }
