@@ -111,5 +111,6 @@ public class SystemSettings {
         Settings.System.RINGTONE_VIBRATION_PATTERN,
         Settings.System.CUSTOM_RINGTONE_VIBRATION_PATTERN,
         Settings.System.BATTERY_LEVEL_COLORS,
+        Settings.System.QS_SYSTEM_INFO,
     };
 }
