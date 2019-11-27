@@ -221,6 +221,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         // it's unavailable or charging
         mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_ESTIMATE);
         setBatteryClickable(true);
+        updateSysInfoResources();
         updateSettings();
 
         mIconsAlphaAnimatorFixed = new TouchAnimator.Builder()
@@ -421,25 +422,27 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         }
     }
 
-    private void updateSettings() {
-      Resources resources = mContext.getResources();
-      mSysCPUTemp = resources.getString(
-                com.android.internal.R.string.config_sysCPUTemp);
-      mSysBatTemp = resources.getString(
-                com.android.internal.R.string.config_sysBatteryTemp);
-      mSysGPUFreq = resources.getString(
-                com.android.internal.R.string.config_sysGPUFreq);
-      mSysGPULoad = resources.getString(
-                com.android.internal.R.string.config_sysGPULoad);
-      mSysCPUTempMultiplier = resources.getInteger(
-                com.android.internal.R.integer.config_sysCPUTempMultiplier);
-      mSysBatTempMultiplier = resources.getInteger(
-                com.android.internal.R.integer.config_sysBatteryTempMultiplier);
+    private void updateSysInfoResources(){
+        Resources resources = mContext.getResources();
+        mSysCPUTemp = resources.getString(
+                  com.android.internal.R.string.config_sysCPUTemp);
+        mSysBatTemp = resources.getString(
+                  com.android.internal.R.string.config_sysBatteryTemp);
+        mSysGPUFreq = resources.getString(
+                  com.android.internal.R.string.config_sysGPUFreq);
+        mSysGPULoad = resources.getString(
+                  com.android.internal.R.string.config_sysGPULoad);
+        mSysCPUTempMultiplier = resources.getInteger(
+                  com.android.internal.R.integer.config_sysCPUTempMultiplier);
+        mSysBatTempMultiplier = resources.getInteger(
+                  com.android.internal.R.integer.config_sysBatteryTempMultiplier);
+    }
 
-      mSystemInfoMode = getQsSystemInfoMode();
-      updateSystemInfoText();
-      updateResources();
-   }
+    public void updateSettings() {
+        mSystemInfoMode = getQsSystemInfoMode();
+        updateSystemInfoText();
+        updateResources();
+    }
 
     void updateResources() {
         Resources resources = mContext.getResources();
