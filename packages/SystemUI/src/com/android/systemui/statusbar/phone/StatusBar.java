@@ -4105,6 +4105,9 @@ public class StatusBar extends SystemUI implements
 			resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.QS_SYSTEM_INFO), false,
                     this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_DATAUSAGE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4827,4 +4830,9 @@ public class StatusBar extends SystemUI implements
                     return mStartingSurfaceOptional.get().getBackgroundColor(task);
                 }
             };
+	public void updateDataUsageImage() {
+        if (mQuickStatusBarHeader != null) {
+            mQuickStatusBarHeader.updateDataUsageImage();
+        }
+    }
 }

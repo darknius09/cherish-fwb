@@ -54,13 +54,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.android.internal.policy.SystemBarUtils;
-import com.android.internal.util.aicp.FileUtils;
+import com.android.internal.util.cherish.CherishUtils;
+import com.android.internal.util.cherish.FileUtils;
 import com.android.settingslib.Utils;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
 import com.android.systemui.battery.BatteryMeterView;
 import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.qs.QSDetail.Callback;
+import com.android.systemui.statusbar.info.DataUsageView;
 import com.android.systemui.statusbar.phone.StatusBarContentInsetsProvider;
 import com.android.systemui.statusbar.phone.StatusBarIconController;
 import com.android.systemui.statusbar.phone.StatusBarIconController.TintedIconManager;
@@ -115,6 +117,11 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
     private View mRightLayout;
     private View mDateContainer;
     private View mPrivacyContainer;
+
+    // Data Usage
+    private View mDataUsageLayout;
+    private ImageView mDataUsageImage;
+    private DataUsageView mDataUsageView;
 
     private BatteryMeterView mBatteryRemainingIcon;
     private StatusIconContainer mIconContainer;
@@ -207,6 +214,9 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         mClockView.setOnClickListener(this);
         mClockView.setOnLongClickListener(this);
         mDatePrivacySeparator = findViewById(R.id.space);
+        mDataUsageLayout = findViewById(R.id.daily_data_usage_layout);
+        mDataUsageImage = findViewById(R.id.daily_data_usage_icon);
+        mDataUsageView = findViewById(R.id.data_sim_usage);
         // Tint for the battery icons are handled in setupHost()
         mBatteryRemainingIcon = findViewById(R.id.batteryRemainingIcon);
         mNetworkTraffic = findViewById(R.id.network_traffic);
@@ -408,6 +418,40 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         mSystemInfoMode = getQsSystemInfoMode();
         updateSystemInfoText();
         updateResources();
+        updateDataUsageView();
+        updateDataUsageImage();
+    }
+
+    private void updateDataUsageView() {
+        if (mDataUsageView.isDataUsageEnabled() != 0) {
+            if (CherishUtils.isConnected(mContext)) {
+                DataUsageView.updateUsage();
+                mDataUsageLayout.setVisibility(View.VISIBLE);
+                mDataUsageImage.setVisibility(View.VISIBLE);
+                mDataUsageView.setVisibility(View.VISIBLE);
+            } else {
+                mDataUsageView.setVisibility(View.GONE);
+                mDataUsageImage.setVisibility(View.GONE);
+                mDataUsageLayout.setVisibility(View.GONE);
+            }
+        } else {
+            mDataUsageView.setVisibility(View.GONE);
+            mDataUsageImage.setVisibility(View.GONE);
+            mDataUsageLayout.setVisibility(View.GONE);
+        }
+    }
+
+    public void updateDataUsageImage() {
+        if (mDataUsageView.isDataUsageEnabled() == 0) {
+            mDataUsageImage.setVisibility(View.GONE);
+        } else {
+            if (CherishUtils.isWiFiConnected(mContext)) {
+                mDataUsageImage.setImageDrawable(mContext.getDrawable(R.drawable.ic_data_usage_wifi));
+            } else {
+                mDataUsageImage.setImageDrawable(mContext.getDrawable(R.drawable.ic_data_usage_cellular));
+            }
+            mDataUsageImage.setVisibility(View.VISIBLE);
+        }
     }
 
     void updateResources() {
@@ -612,6 +656,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         updateSystemInfoText();
         updateEverything();
         setBatteryClickable(mExpanded || mPrivacyChip.getVisibility() != View.VISIBLE);
+        updateDataUsageView();
     }
 
     /**

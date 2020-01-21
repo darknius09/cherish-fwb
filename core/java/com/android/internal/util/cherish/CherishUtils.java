@@ -49,6 +49,7 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.format.Time;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -166,6 +167,15 @@ public class CherishUtils {
     // Check to see if device supports an alterative ambient display package
     public static boolean hasAltAmbientDisplay(Context context) {
         return context.getResources().getBoolean(com.android.internal.R.bool.config_alt_ambient_display);
+    }
+	
+	// Returns today's passed time in Millisecond
+    public static long getTodayMillis() {
+        final long passedMillis;
+        Time time = new Time();
+        time.set(System.currentTimeMillis());
+        passedMillis = ((time.hour * 60 * 60) + (time.minute * 60) + time.second) * 1000;
+        return passedMillis;
     }
 
     public static boolean deviceHasFlashlight(Context ctx) {

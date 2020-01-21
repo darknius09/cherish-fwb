@@ -6558,6 +6558,12 @@ public final class Settings {
         public static final String QS_SYSTEM_INFO = "qs_system_info";
 		
 		/**
+         * Show data usage in QS header
+         * @hide
+         */
+        public static final String QS_DATAUSAGE = "qs_datausage";
+		
+		/**
          * These are all public system settings
          *
          * @hide
@@ -6699,6 +6705,7 @@ public final class Settings {
 			PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
             PRIVATE_SETTINGS.add(QS_SYSTEM_INFO);
+            PRIVATE_SETTINGS.add(QS_DATAUSAGE);
         }
 
         /**

@@ -241,5 +241,8 @@
 	
 	<!-- Anti flicker QS tile -->
     <string name="quick_settings_anti_flicker">Anti flicker</string>
+	
+	<!-- Daily data usage -->
+    <string name="daily_data_usage_title">Today\'s usage</string>
 
 </resources>
