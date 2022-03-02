@@ -563,6 +563,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
                 // These views appear on expanding down
                 .addFloat(mDateView, "alpha", 0, 0, 1)
                 .addFloat(mClockDateView, "alpha", 1, 0, 0)
+                .addFloat(mDataUsageLayout, "alpha", 1, 0, 0)
                 .addFloat(mQSCarriers, "alpha", 0, 1)
                 .setListener(new TouchAnimator.ListenerAdapter() {
                     @Override
@@ -573,6 +574,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
                         }
                         // Make it gone so there's enough room for carrier names
                         mClockDateView.setVisibility(View.GONE);
+                        mDataUsageLayout.setVisibility(View.GONE);
                     }
 
                     @Override
@@ -581,6 +583,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
                             mClockDateView.setVisibility(View.VISIBLE);
                             mClockDateView.setFreezeSwitching(true);
                         }
+                        mDataUsageLayout.setVisibility(View.VISIBLE);
                         setSeparatorVisibility(false);
                         if (!mIsSingleCarrier) {
                             mIconContainer.addIgnoredSlots(mRssiIgnoredSlots);
@@ -594,6 +597,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
                             mClockDateView.setFreezeSwitching(false);
                             mClockDateView.setVisibility(View.VISIBLE);
                         }
+                        mDataUsageLayout.setVisibility(View.VISIBLE);
                         setSeparatorVisibility(mShowClockIconsSeparator);
                         // In QQS we never ignore RSSI.
                         mIconContainer.removeIgnoredSlots(mRssiIgnoredSlots);
