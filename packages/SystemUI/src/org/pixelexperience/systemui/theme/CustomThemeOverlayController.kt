@@ -101,7 +101,7 @@ class CustomThemeOverlayController @Inject constructor(
     override fun start() {
         mTunerService.addTunable(this, PREF_COLOR_OVERRIDE, PREF_WHITE_LUMINANCE,
                 PREF_CHROMA_FACTOR, PREF_ACCURATE_SHADES, 
-                PREF_LINEAR_LIGHTNESS, PREF_CUSTOM_COLOR, SYSTEM_BLACK_THEME)
+                PREF_LINEAR_LIGHTNESS, PREF_CUSTOM_COLOR, SYSTEM_BLACK_THEME, Settings.Secure.UI_NIGHT_MODE)
         super.start()
     }
 
