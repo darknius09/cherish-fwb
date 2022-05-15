@@ -258,7 +258,7 @@
         <item>com.android.networkstack.tethering</item>
         <item>com.android.systemui</item>
         <item>com.google.android.settings.intelligence</item>
-        <item>com.crdroid.faceunlock</item>
+        <item>org.pixelexperience.faceunlock</item>
     </string-array>
 	
 	<!-- System info -->
