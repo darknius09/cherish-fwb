@@ -6388,6 +6388,12 @@ public final class Settings {
         public static final String NOTIFICATION_MATERIAL_DISMISS = "notification_material_dismiss";
 
         /**
+         * boolean value. toggles narrow navigation bar in gestural nav mode
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_GESTURAL_NARROW = "navigation_bar_gestural_narrow";
+
+        /**
          * @hide
          */
         public static final String NOTIFICATION_MATERIAL_DISMISS_STYLE = "notification_material_dismiss_style";
