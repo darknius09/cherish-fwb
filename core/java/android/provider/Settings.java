@@ -5747,13 +5747,6 @@ public final class Settings {
          */
         @Readable
         public static final String VOLUME_DIALOG_TIMEOUT = "volume_dialog_timeout";
-		
-		/**
-         * Whether to hide navbar pill and keyboard space.
-         * Default 0.
-         * @hide
-         */
-        public static final String FULLSCREEN_GESTURES = "fullscreen_gestures";
 
         /** @hide */
         public static final String BACK_GESTURE_HEIGHT = "back_gesture_height";
