@@ -113,8 +113,8 @@
                         android:layout_height="@dimen/volume_dialog_tap_target_size"
                         android:layout_gravity="center"
                         android:contentDescription="@string/accessibility_volume_settings"
-                        android:background="@drawable/ripple_drawable_20dp"
-                        android:tint="?androidprv:attr/colorAccent"
+                        android:background="@drawable/volume_drawer_selection_bg"
+                        android:tint="?androidprv:attr/textColorPrimaryInverse"
                         android:soundEffectsEnabled="false" />
                 </FrameLayout>
                 
