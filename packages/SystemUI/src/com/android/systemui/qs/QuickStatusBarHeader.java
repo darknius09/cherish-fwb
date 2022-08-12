@@ -872,7 +872,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
             case SHOW_QS_DATE:
                 mShowDate =
                         TunerService.parseIntegerSwitch(newValue, true);
-                mClockDateView.setVisibility(mShowClock && mShowDate ? View.VISIBLE : View.GONE);
+                mClockDateView.setVisibility(mShowDate ? View.VISIBLE : View.GONE);
                 break;
             default:
                 break;
