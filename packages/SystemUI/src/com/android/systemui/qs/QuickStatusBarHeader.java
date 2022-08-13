@@ -86,6 +86,8 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
             "system:" + Settings.System.SHOW_QS_CLOCK;
     private static final String SHOW_QS_DATE =
             "system:" + Settings.System.SHOW_QS_DATE;
+    private static final String QS_HEADER_DATE_SIZE =
+            "system:" + Settings.System.QS_HEADER_DATE_SIZE;
 
     private final Handler mHandler = new Handler();
     public static final String QS_SHOW_INFO_HEADER = "qs_show_info_header";
@@ -155,6 +157,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
     }
     private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
     private int mRoundedCornerPadding = 0;
+    private int mQSDateSize;
     private int mWaterfallTopInset;
     private int mCutOutPaddingLeft;
     private int mCutOutPaddingRight;
@@ -249,7 +252,8 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         Dependency.get(TunerService.class).addTunable(this,
                 StatusBarIconController.ICON_HIDE_LIST,
                 SHOW_QS_CLOCK,
-                SHOW_QS_DATE);
+                SHOW_QS_DATE,
+                QS_HEADER_DATE_SIZE);
     }
 
     void onAttach(TintedIconManager iconManager,
@@ -874,6 +878,10 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
                         TunerService.parseIntegerSwitch(newValue, true);
                 mClockDateView.setVisibility(mShowDate ? View.VISIBLE : View.GONE);
                 break;
+            case QS_HEADER_DATE_SIZE:
+            	mQSDateSize = TunerService.parseInteger(newValue, 14);
+            	mClockDateView.setTextSize(mQSDateSize);
+            	break;
             default:
                 break;
         }
