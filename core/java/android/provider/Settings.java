@@ -5683,6 +5683,14 @@ public final class Settings {
                 "statusbar_battery_bar_charging_color";
 
         /**
+         * Statusbar clock background
+         * 0 - hide accented chip 
+         * 1 - show accented chip (default)
+         * @hide
+         */
+        public static final String STATUSBAR_CLOCK_CHIP = "statusbar_clock_chip";
+
+        /**
          * @hide
          */
         public static final String STATUSBAR_BATTERY_BAR_BATTERY_LOW_COLOR =
@@ -6747,6 +6755,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
             PRIVATE_SETTINGS.add(NAV_BAR_COMPACT_LAYOUT);
             PRIVATE_SETTINGS.add(QS_SYSTEM_INFO);
+            PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);
         }
 
         /**
